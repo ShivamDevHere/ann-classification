@@ -31,7 +31,7 @@ balance = st.number_input('Balance')
 credit_score = st.number_input('Credit Score')
 estimated_salary = st.number_input('Estimated Salary')
 tenure = st.slider('Tenure', 0, 10)
-num_of_products = st.selectbox('Number of Products')
+num_of_products = st.slider('Number of Products', 1, 4)
 has_cr_card = st.selectbox('Has Credit Card', [0, 1])
 is_active_member = st.selectbox('Is Active Member', [0, 1])
 
@@ -42,14 +42,15 @@ input_data = pd.DataFrame({
     'Age': [age],
     'Tenure': [tenure],
     'Balance': [balance],
-    'NumofProducts': [num_of_products],
+    'NumOfProducts': [num_of_products],
     'HasCrCard': [has_cr_card],
     'IsActiveMember': [is_active_member],
     'EstimatedSalary':[estimated_salary]
 })
 
 # OHE Geography
-geo_encoded = onehot_encoder_geo.transform([[input_data['Geography']]]).toarray()
+# geo_encoded = onehot_encoder_geo.transform([[input_data[geography]]]).toarray()
+geo_encoded = onehot_encoder_geo.transform([[geography]]).toarray()
 geo_encoded_df = pd.DataFrame(geo_encoded, columns=onehot_encoder_geo.get_feature_names_out(['Geography']))
 
 #Combining OHE Geography with Input Data
