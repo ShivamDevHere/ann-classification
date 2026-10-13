@@ -58,3 +58,13 @@ input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df], axis
 # Scaling Input Data
 input_data_scale = scaler.transform(input_data)
 
+# Predict PART
+prediction = model.predict(input_data_scale)
+prediction_prob = prediction[0][0]
+
+st.write(f'Result: {prediction_prob:.2f}')
+
+if prediction_prob > 0.5:
+    st.write('Customer is likely to churn.')
+else:
+    st.write('Customer is not likely to churn.')
