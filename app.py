@@ -35,3 +35,26 @@ num_of_products = st.selectbox('Number of Products')
 has_cr_card = st.selectbox('Has Credit Card', [0, 1])
 is_active_member = st.selectbox('Is Active Member', [0, 1])
 
+# Prepareing Input Data
+input_data = pd.DataFrame({
+    'CreditScore': [credit_score],
+    'Gender': [label_encoder_gender.transform([gender])[0]],
+    'Age': [age],
+    'Tenure': [tenure],
+    'Balance': [balance],
+    'NumofProducts': [num_of_products],
+    'HasCrCard': [has_cr_card],
+    'IsActiveMember': [is_active_member],
+    'EstimatedSalary':[estimated_salary]
+})
+
+# OHE Geography
+geo_encoded = onehot_encoder_geo.transform([[input_data['Geography']]]).toarray()
+geo_encoded_df = pd.DataFrame(geo_encoded, columns=onehot_encoder_geo.get_feature_names_out(['Geography']))
+
+#Combining OHE Geography with Input Data
+input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df], axis=1)
+
+# Scaling Input Data
+input_data_scale = scaler.transform(input_data)
+
