@@ -19,3 +19,9 @@ with open('models/label_encoder_gender.pkl', 'rb') as file:
 # Scaler
 with open('models/scaler.pkl', 'rb') as file:
     scaler = pickle.load(file)
+
+# Streamlit Part
+st.title('Customer Churn Prediction using ANN')
+
+
+
