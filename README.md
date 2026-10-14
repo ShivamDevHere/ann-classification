@@ -121,7 +121,7 @@ ANN-Customer-Churn/
 
 ## Live Demo
 
-**Live Application:** [Comming Soon]
+**Live Application:** [https://ann-customer-churn-prediction-app.streamlit.app/]
 
 ## Author
 
