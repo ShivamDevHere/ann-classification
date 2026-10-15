@@ -6,7 +6,7 @@ import pandas as pd
 import pickle
 
 # Importing Model 
-model = tf.keras.models.load_model('models/reg-ann-customer-churn-prediction-model.h5')
+model = tf.keras.models.load_model('models/ann-customer-churn-prediction-model.h5')
 
 # Encoder
 with open('models/ann-customer-churn-prediction-onehot_encoder_geo.pkl', 'rb') as file:
